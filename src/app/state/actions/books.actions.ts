@@ -15,3 +15,5 @@ export const retrievedBookList = createAction(
   '[Book List/API] Retrieve Books Success',
   props<{ books: ReadonlyArray<Book> }>()
 );
+
+export const loadBooks = createAction('[Book List/API] Load Books');

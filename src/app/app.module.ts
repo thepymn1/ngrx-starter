@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { collectionReducer } from './state/reducers/collection.reducer';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookCollectionComponent } from './book-collection/book-collection.component';
 import { environment } from 'src/environments/environment';
+import { BookEffects } from './state/effects/book.effects';
 
 @NgModule({
   declarations: [AppComponent, BookListComponent, BookCollectionComponent],
@@ -24,6 +26,7 @@ import { environment } from 'src/environments/environment';
       logOnly: environment.production,
       autoPause: true,
     }),
+    EffectsModule.forRoot([BookEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

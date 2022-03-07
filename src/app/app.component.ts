@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { GoogleBooksService } from './book-list/books.service';
-import {
-  addBook,
-  removeBook,
-  retrievedBookList,
-} from './state/actions/books.actions';
+import { addBook, removeBook, loadBooks } from './state/actions/books.actions';
 import {
   selectBookCollection,
   selectBooks,
@@ -31,8 +27,6 @@ export class AppComponent implements OnInit {
   constructor(private booksService: GoogleBooksService, private store: Store) {}
 
   ngOnInit(): void {
-    this.booksService
-      .getBooks()
-      .subscribe((books) => this.store.dispatch(retrievedBookList({ books })));
+    this.store.dispatch(loadBooks());
   }
 }
